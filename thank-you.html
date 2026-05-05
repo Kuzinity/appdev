@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Received — BYJAY</title>
+  <meta name="robots" content="noindex">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#c9a84c', 'gold-light': '#e0c060',
+            ink: '#111111', cream: '#f0e6c8',
+            plum: '#7b5ea7', midnight: '#1a1a2e',
+          },
+          fontFamily: {
+            display: ['Bebas Neue', 'sans-serif'],
+            body:    ['DM Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Confetti pieces */
+    .confetti-piece {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      top: -20px;
+      opacity: 0;
+      animation: confettiFall linear forwards;
+      border-radius: 2px;
+      pointer-events: none;
+      z-index: 10;
+    }
+    @keyframes confettiFall {
+      0%   { opacity: 1; transform: translateY(0) rotate(0deg); }
+      100% { opacity: 0; transform: translateY(110vh) rotate(720deg); }
+    }
+
+    /* Checkmark circle pop */
+    @keyframes popIn {
+      0%   { transform: scale(0) rotate(-20deg); opacity: 0; }
+      70%  { transform: scale(1.15) rotate(5deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    .check-pop {
+      animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s both;
+    }
+
+    /* Staggered fade-up for content blocks */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up-1 { animation: fadeUp 0.5s ease 0.7s both; }
+    .fade-up-2 { animation: fadeUp 0.5s ease 0.9s both; }
+    .fade-up-3 { animation: fadeUp 0.5s ease 1.1s both; }
+    .fade-up-4 { animation: fadeUp 0.5s ease 1.3s both; }
+
+    /* Pulse ring around checkmark */
+    @keyframes pulseRing {
+      0%   { transform: scale(1);   opacity: 0.6; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+    .pulse-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 3px solid #c9a84c;
+      animation: pulseRing 1.6s ease-out 0.8s infinite;
+    }
+
+    /* Step dots */
+    .step-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #c9a84c;
+      color: #111;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Countdown ring */
+    @keyframes countdownShrink {
+      from { stroke-dashoffset: 0; }
+      to   { stroke-dashoffset: 283; }
+    }
+    #countdownRing {
+      animation: countdownShrink 30s linear forwards;
+      stroke-dasharray: 283;
+      stroke-dashoffset: 0;
+    }
+  </style>
+  <style>
+    /* ===== DARK SECTION LEGIBILITY ===== */
+    h1, h2, h3 { letter-spacing: 0.02em; }
+    /* Gold logo glow */
+    header .font-display.text-gold {
+      text-shadow: 0 0 20px rgba(201,168,76,0.35);
+    }
+    /* Drop/dark hero heading */
+    .bg-midnight h1, .bg-midnight h2 {
+      text-shadow: 0 2px 24px rgba(0,0,0,0.65);
+    }
+    .bg-midnight .text-gold, .bg-midnight span.text-gold {
+      text-shadow: 0 0 32px rgba(201,168,76,0.55), 0 0 8px rgba(201,168,76,0.3);
+    }
+    .bg-midnight p {
+      text-shadow: 0 1px 8px rgba(0,0,0,0.45);
+    }
+    /* Italic review quotes */
+    p.italic {
+      font-style: italic;
+      color: rgba(200,200,200,0.9);
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body class="font-body bg-ink text-cream overflow-x-hidden min-h-screen flex flex-col">
+
+  <!-- Minimal header -->
+  <header class="border-b border-white/10 py-4 px-6">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="./index.html" class="font-display text-gold text-3xl tracking-[6px]">BYJAY</a>
+      <a href="./shop.html" class="text-cream/50 text-xs tracking-widest hover:text-gold transition-colors">← BACK TO SHOP</a>
+    </div>
+  </header>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main class="flex-1 flex items-center justify-center px-6 py-16">
+    <div class="max-w-lg w-full text-center">
+
+      <!-- Checkmark -->
+      <div class="relative w-28 h-28 mx-auto mb-8 check-pop">
+        <div class="pulse-ring"></div>
+        <div class="w-28 h-28 rounded-full bg-gold flex items-center justify-center shadow-2xl shadow-gold/30">
+          <svg class="w-14 h-14 text-ink" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <div class="fade-up-1">
+        <p class="text-gold text-xs tracking-[5px] font-bold mb-3">ORDER RECEIVED</p>
+        <h1 class="font-display text-cream leading-tight mb-4" style="font-size: clamp(48px, 8vw, 80px);">
+          YOU'RE ALL<br><span class="text-gold">SET!</span>
+        </h1>
+        <p class="text-cream/60 text-sm leading-relaxed max-w-sm mx-auto">
+          Your order request has been received. We'll reach out via Instagram DM or your contact number within <strong class="text-cream">24 hours</strong> to confirm your order and arrange payment.
+        </p>
+      </div>
+
+      <!-- Divider -->
+      <div class="my-8 h-px bg-white/10 fade-up-2"></div>
+
+      <!-- What happens next -->
+      <div class="text-left space-y-5 fade-up-2">
+        <p class="text-xs font-bold tracking-[4px] text-gray-400 mb-4 text-center">WHAT HAPPENS NEXT</p>
+
+        <div class="flex items-start gap-4">
+          <div class="step-dot">1</div>
+          <div>
+            <p class="font-bold text-sm text-cream mb-1">We review your order</p>
+            <p class="text-gray-400 text-xs leading-relaxed">Our team checks your request, confirms stock and customization details.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="step-dot">2</div>
+          <div>
+            <p class="font-bold text-sm text-cream mb-1">We DM you to confirm</p>
+            <p class="text-gray-400 text-xs leading-relaxed">You'll get a message on Instagram or via your contact number with the final price and payment instructions.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="step-dot">3</div>
+          <div>
+            <p class="font-bold text-sm text-cream mb-1">You pay & we ship</p>
+            <p class="text-gray-400 text-xs leading-relaxed">Once payment is confirmed, your item is packed and shipped out. Tracking details provided when available.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="step-dot">4</div>
+          <div>
+            <p class="font-bold text-sm text-cream mb-1">Enjoy your vibe ✨</p>
+            <p class="text-gray-400 text-xs leading-relaxed">Your pins or charms arrive. Show us your fit by tagging <span class="text-gold font-bold">@byjayy__</span> on Instagram!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="my-8 h-px bg-white/10 fade-up-3"></div>
+
+      <!-- Contact reminder -->
+      <div class="fade-up-3 bg-white/5 border border-white/10 rounded-2xl p-6 mb-8 text-left">
+        <p class="text-xs font-bold tracking-[4px] text-gray-400 mb-4">REACH US DIRECTLY</p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="https://ig.me/m/byjayy__" target="_blank"
+            class="flex-1 flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl p-4 hover:-translate-y-0.5 transition-transform">
+            <span class="text-2xl">📸</span>
+            <div>
+              <p class="font-bold text-sm text-white">Instagram DM</p>
+              <p class="text-white/70 text-xs">@byjayy__</p>
+            </div>
+          </a>
+          <a href="https://www.tiktok.com/@byjayyy__" target="_blank"
+            class="flex-1 flex items-center gap-3 bg-black border border-white/10 rounded-xl p-4 hover:-translate-y-0.5 transition-transform">
+            <span class="text-2xl">🎵</span>
+            <div>
+              <p class="font-bold text-sm text-white">TikTok</p>
+              <p class="text-white/70 text-xs">@byjayyy__</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- CTA buttons -->
+      <div class="flex flex-wrap gap-4 justify-center fade-up-4">
+        <a href="./shop.html" class="btn-primary">KEEP SHOPPING →</a>
+        <a href="./index.html" class="btn-secondary">BACK TO HOME</a>
+      </div>
+
+      <!-- Auto-redirect countdown -->
+      <div class="mt-10 fade-up-4 flex flex-col items-center gap-3">
+        <div class="relative w-12 h-12">
+          <svg class="w-12 h-12 -rotate-90" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="none" stroke="#ffffff10" stroke-width="8"/>
+            <circle id="countdownRing" cx="50" cy="50" r="45" fill="none" stroke="#c9a84c"
+              stroke-width="8" stroke-linecap="round"/>
+          </svg>
+          <span id="countdownNum" class="absolute inset-0 flex items-center justify-center text-gold text-sm font-bold">30</span>
+        </div>
+        <p class="text-gray-500 text-xs">Redirecting to shop in <span id="countdownText" class="text-gold font-bold">30</span>s</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-6 px-6 text-center">
+    <p class="text-gray-600 text-xs">© 2025 BYJAY — Pins & Charms · Made with 💛 in Manila</p>
+  </footer>
+
+  <script>
+    // ============ CONFETTI ============
+    const colors = ['#c9a84c', '#ffd93d', '#7b5ea7', '#ffffff', '#e0c060', '#ff6b9d'];
+
+    function spawnConfetti(count) {
+      for (let i = 0; i < count; i++) {
+        setTimeout(() => {
+          const el = document.createElement('div');
+          el.className = 'confetti-piece';
+          const size = 6 + Math.random() * 10;
+          el.style.cssText = `
+            left: ${Math.random() * 100}vw;
+            width: ${size}px;
+            height: ${size}px;
+            background: ${colors[Math.floor(Math.random() * colors.length)]};
+            animation-duration: ${1.8 + Math.random() * 2}s;
+            animation-delay: ${Math.random() * 0.5}s;
+            border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+            transform: rotate(${Math.random() * 360}deg);
+          `;
+          document.body.appendChild(el);
+          setTimeout(() => el.remove(), 4000);
+        }, i * 30);
+      }
+    }
+
+    // Fire confetti on load
+    window.addEventListener('load', () => {
+      spawnConfetti(80);
+      // Second burst after 1.2s
+      setTimeout(() => spawnConfetti(50), 1200);
+    });
+
+    // ============ COUNTDOWN REDIRECT ============
+    let seconds = 30;
+    const numEl   = document.getElementById('countdownNum');
+    const textEl  = document.getElementById('countdownText');
+
+    const timer = setInterval(() => {
+      seconds--;
+      numEl.textContent  = seconds;
+      textEl.textContent = seconds;
+      if (seconds <= 0) {
+        clearInterval(timer);
+        window.location.href = 'shop.html';
+      }
+    }, 1000);
+
+    // Cancel redirect if user interacts
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('click', () => clearInterval(timer));
+    });
+  </script>
+
+</body>
+</html>

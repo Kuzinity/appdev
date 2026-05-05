@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews — BYJAY</title>
+  <meta name="description" content="Real reviews from real BYJAY customers. Read what people say about our pins and Italian charm bracelets, and leave your own review.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#c9a84c', 'gold-light': '#e0c060',
+            ink: '#111111', cream: '#f0e6c8',
+            plum: '#7b5ea7', midnight: '#1a1a2e',
+          },
+          fontFamily: {
+            display: ['Bebas Neue', 'sans-serif'],
+            body:    ['DM Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ---- Interactive star rating ---- */
+    .star-input-row {
+      display: flex;
+      gap: 8px;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+    .star-input-row input[type="radio"] { display: none; }
+    .star-input-row label {
+      font-size: 36px;
+      color: #333;
+      cursor: pointer;
+      transition: color 0.12s, transform 0.12s;
+      line-height: 1;
+    }
+    .star-input-row input[type="radio"]:checked ~ label,
+    .star-input-row label:hover,
+    .star-input-row label:hover ~ label {
+      color: #c9a84c;
+      transform: scale(1.15);
+    }
+
+    /* ---- Review card new-entry animation ---- */
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .review-new { animation: slideDown 0.4s ease both; }
+
+    /* ---- Rating breakdown bar ---- */
+    .rating-bar-fill {
+      height: 8px;
+      border-radius: 4px;
+      background: #c9a84c;
+      transition: width 0.6s ease;
+    }
+
+    /* ---- Filter pill active ---- */
+    .review-pill.active {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    /* ---- Verified badge ---- */
+    .verified-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: #c9a84c;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+  </style>
+  <style>
+    /* ===== DARK SECTION LEGIBILITY ===== */
+    h1, h2, h3 { letter-spacing: 0.02em; }
+    /* Gold logo glow */
+    header .font-display.text-gold {
+      text-shadow: 0 0 20px rgba(201,168,76,0.35);
+    }
+    /* Drop/dark hero heading */
+    .bg-midnight h1, .bg-midnight h2 {
+      text-shadow: 0 2px 24px rgba(0,0,0,0.65);
+    }
+    .bg-midnight .text-gold, .bg-midnight span.text-gold {
+      text-shadow: 0 0 32px rgba(201,168,76,0.55), 0 0 8px rgba(201,168,76,0.3);
+    }
+    .bg-midnight p {
+      text-shadow: 0 1px 8px rgba(0,0,0,0.45);
+    }
+    /* Italic review quotes */
+    p.italic {
+      font-style: italic;
+      color: rgba(200,200,200,0.9);
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body class="font-body bg-white text-ink overflow-x-hidden">
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar">
+    📌 FREE SHIPPING on PHP 500+ · 🔥 F1 Limited Pins DROPPING NOW · ✦ Manila-based, ships nationwide · 📌 FREE SHIPPING on PHP 500+ · 🔥 F1 Limited Pins DROPPING NOW · ✦ Manila-based, ships nationwide
+  </div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-ink border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="./index.html" class="font-display text-gold text-3xl tracking-[6px]">BYJAY</a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="./index.html"         class="nav-link text-cream text-sm tracking-widest hover:text-gold transition-colors">HOME</a>
+        <a href="./drops.html"         class="nav-link text-cream text-sm tracking-widest hover:text-gold transition-colors">LIMITED DROPS</a>
+        <a href="./shop.html"          class="nav-link text-cream text-sm tracking-widest hover:text-gold transition-colors">SHOP</a>
+        <a href="./reviews.html"       class="nav-link active text-gold text-sm tracking-widest">REVIEWS</a>
+        <a href="./contact.html" class="nav-link text-cream text-sm tracking-widest hover:text-gold transition-colors">CONTACT</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-cream focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-ink border-t border-white/10 px-6 py-4 flex flex-col gap-4">
+      <a href="./index.html"         class="text-cream text-sm tracking-widest hover:text-gold transition-colors">HOME</a>
+      <a href="./drops.html"         class="text-cream text-sm tracking-widest hover:text-gold transition-colors">LIMITED DROPS</a>
+      <a href="./shop.html"          class="text-cream text-sm tracking-widest hover:text-gold transition-colors">SHOP</a>
+      <a href="./reviews.html"       class="text-gold text-sm tracking-widest">REVIEWS</a>
+      <a href="./contact.html" class="text-cream text-sm tracking-widest hover:text-gold transition-colors">CONTACT</a>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="bg-ink relative overflow-hidden py-20 px-6">
+    <div class="noise-overlay absolute inset-0 opacity-[0.04]"></div>
+    <div class="absolute top-0 right-0 w-80 h-80 bg-gold/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-plum/10 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3"></div>
+    <div class="relative max-w-4xl mx-auto text-center" data-aos="fade-up">
+      <p class="text-gold text-xs tracking-[5px] font-bold mb-4">REAL WORDS · REAL PEOPLE</p>
+      <h1 class="font-display text-cream leading-none mb-6" style="font-size: clamp(56px, 9vw, 110px);">CUSTOMER<br><span class="text-gold">REVIEWS</span></h1>
+      <p class="text-cream/50 text-base max-w-sm mx-auto leading-relaxed">
+        See what our customers are saying — and leave your own review after your order!
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ OVERALL RATING PANEL ============ -->
+  <section class="bg-white border-b border-gray-100 py-12 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center gap-10" data-aos="fade-up">
+
+        <!-- Big score -->
+        <div class="text-center shrink-0">
+          <div class="font-display text-ink leading-none" style="font-size: 96px;" id="overallScore">4.8</div>
+          <div class="text-gold text-2xl tracking-widest mb-1" id="overallStars">★★★★★</div>
+          <div class="text-gray-400 text-sm" id="totalReviews">Based on 3 reviews</div>
+        </div>
+
+        <!-- Breakdown bars -->
+        <div class="flex-1 w-full">
+          <div class="space-y-3" id="ratingBreakdown">
+            <!-- Rows injected by JS -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave-divider bg-white">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 40" preserveAspectRatio="none">
+      <path d="M0,40 C360,0 1080,0 1440,40 L1440,0 L0,0 Z" fill="#fff"/>
+    </svg>
+  </div>
+
+  <!-- ============ REVIEWS SECTION ============ -->
+  <section class="py-14 px-6 max-w-7xl mx-auto">
+
+    <!-- Filter + count row -->
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-8" data-aos="fade-up">
+      <div class="flex items-center gap-3 flex-wrap">
+        <span class="text-xs font-bold tracking-widest text-gray-400">FILTER:</span>
+        <button class="review-pill filter-pill active" data-stars="all">All</button>
+        <button class="review-pill filter-pill" data-stars="5">★★★★★</button>
+        <button class="review-pill filter-pill" data-stars="4">★★★★</button>
+        <button class="review-pill filter-pill" data-stars="3">★★★</button>
+        <button class="review-pill filter-pill" data-stars="2">★★</button>
+        <button class="review-pill filter-pill" data-stars="1">★</button>
+      </div>
+      <p id="reviewCount" class="text-gray-400 text-sm"><span id="reviewCountNum">3</span> reviews</p>
+    </div>
+
+    <!-- Reviews grid -->
+    <div id="reviewsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Seed review 1 -->
+      <div class="review-card-full bg-gray-50 border border-gray-100 rounded-2xl p-6 transition-all duration-200 hover:border-gold hover:-translate-y-1"
+           data-stars="5" data-aos="fade-up" data-aos-delay="0">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="text-gold text-xl tracking-widest mb-1">★★★★★</div>
+            <p class="font-bold text-sm text-ink">@mikael_p</p>
+          </div>
+          <span class="verified-badge">✓ Verified</span>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">
+          "The Spider-Man pin is so detailed! Shipped super fast too. Will definitely order again!"
+        </p>
+        <div class="flex items-center justify-between">
+          <p class="text-gray-400 text-xs">Spider-Man Bracelet</p>
+          <p class="text-gray-300 text-xs">Nov 2024</p>
+        </div>
+      </div>
+
+      <!-- Seed review 2 -->
+      <div class="review-card-full bg-gray-50 border border-gray-100 rounded-2xl p-6 transition-all duration-200 hover:border-gold hover:-translate-y-1"
+           data-stars="5" data-aos="fade-up" data-aos-delay="80">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="text-gold text-xl tracking-widest mb-1">★★★★★</div>
+            <p class="font-bold text-sm text-ink">@cla.ire</p>
+          </div>
+          <span class="verified-badge">✓ Verified</span>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">
+          "Got the Rapunzel charm bracelet and it's absolutely gorgeous. 10/10 packaging!"
+        </p>
+        <div class="flex items-center justify-between">
+          <p class="text-gray-400 text-xs">Rapunzel Charm Watch</p>
+          <p class="text-gray-300 text-xs">Dec 2024</p>
+        </div>
+      </div>
+
+      <!-- Seed review 3 -->
+      <div class="review-card-full bg-gray-50 border border-gray-100 rounded-2xl p-6 transition-all duration-200 hover:border-gold hover:-translate-y-1"
+           data-stars="4" data-aos="fade-up" data-aos-delay="160">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="text-gold text-xl tracking-widest mb-1">★★★★☆</div>
+            <p class="font-bold text-sm text-ink">@racingfan_ph</p>
+          </div>
+          <span class="verified-badge">✓ Verified</span>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">
+          "Love the F1 edition pins! Great quality. Slight delay but worth the wait."
+        </p>
+        <div class="flex items-center justify-between">
+          <p class="text-gray-400 text-xs">F1 Edition Bracelet</p>
+          <p class="text-gray-300 text-xs">Jan 2025</p>
+        </div>
+      </div>
+
+    </div><!-- end reviewsGrid -->
+
+    <!-- Empty state -->
+    <div id="reviewsEmpty" class="hidden text-center py-16">
+      <div class="text-5xl mb-4">💬</div>
+      <h3 class="font-display text-3xl text-ink mb-2">NO REVIEWS YET FOR THIS RATING</h3>
+      <p class="text-gray-400 text-sm">Try a different filter.</p>
+      <button onclick="setReviewFilter('all')" class="btn-outline-dark mt-6">SHOW ALL REVIEWS</button>
+    </div>
+
+  </section>
+
+  <!-- ============ LEAVE A REVIEW FORM ============ -->
+  <section class="py-16 px-6 bg-ink">
+    <div class="max-w-2xl mx-auto">
+
+      <div class="text-center mb-10" data-aos="fade-up">
+        <p class="text-gold text-xs tracking-[4px] font-bold mb-3">SHARE YOUR EXPERIENCE</p>
+        <h2 class="font-display text-cream text-5xl md:text-6xl mb-3">LEAVE A REVIEW</h2>
+        <p class="text-gray-400 text-sm">Your feedback helps us improve and helps others decide!</p>
+      </div>
+
+      <div class="bg-[#1a1a1a] border border-white/10 rounded-3xl p-8" data-aos="fade-up" data-aos-delay="80">
+
+        <form id="reviewForm" onsubmit="submitReview(event)">
+
+          <!-- Name -->
+          <div class="mb-5">
+            <label class="form-label">Your Name / Handle *</label>
+            <input type="text" id="rName" required class="form-input" placeholder="e.g. @yourname or Maria S.">
+          </div>
+
+          <!-- Item purchased -->
+          <div class="mb-5">
+            <label class="form-label">Item You Purchased</label>
+            <select id="rItem" class="form-input">
+              <option value="">Select an item (optional)</option>
+              <option>Snoopy Classic Pin</option>
+              <option>Snoopy Vol.2 Pin</option>
+              <option>Snoopy Vol.3 Pin</option>
+              <option>Music CD Pin Vol.1</option>
+              <option>Music CD Pin Vol.2</option>
+              <option>Music CD Pin Vol.3</option>
+              <option>Hirono Pin Vol.1</option>
+              <option>Hirono Pin Vol.2</option>
+              <option>Hirono Pin Vol.3</option>
+              <option>Quotes Pin Vol.1</option>
+              <option>Quotes Pin Vol.2</option>
+              <option>Quotes Pin Vol.3</option>
+              <option>Smiski Pin Vol.1</option>
+              <option>Smiski Pin Vol.2</option>
+              <option>Smiski Pin Vol.3</option>
+              <option>Sanrio Charm Vol.1</option>
+              <option>Sanrio Charm Vol.2</option>
+              <option>Sanrio Charm Vol.3</option>
+              <option>Formula 1 Edition Bracelet</option>
+              <option>Rapunzel Charm Watch</option>
+              <option>Amazing Spider-Man Bracelet</option>
+              <option>Linked in Love Set</option>
+              <option>Other / Custom Order</option>
+            </select>
+          </div>
+
+          <!-- Star rating -->
+          <div class="mb-5">
+            <label class="form-label">Your Rating *</label>
+            <div class="star-input-row mt-2" id="starRow">
+              <input type="radio" id="s5" name="rating" value="5">
+              <label for="s5" title="5 stars">★</label>
+              <input type="radio" id="s4" name="rating" value="4">
+              <label for="s4" title="4 stars">★</label>
+              <input type="radio" id="s3" name="rating" value="3">
+              <label for="s3" title="3 stars">★</label>
+              <input type="radio" id="s2" name="rating" value="2">
+              <label for="s2" title="2 stars">★</label>
+              <input type="radio" id="s1" name="rating" value="1">
+              <label for="s1" title="1 star">★</label>
+            </div>
+            <p id="starHint" class="text-gray-500 text-xs mt-2">Click a star to rate</p>
+          </div>
+
+          <!-- Review text -->
+          <div class="mb-6">
+            <label class="form-label">Your Review *</label>
+            <textarea id="rText" rows="4" required class="form-input" placeholder="Tell us about your experience — quality, shipping, vibe..."></textarea>
+          </div>
+
+          <!-- Honeypot (spam protection) -->
+          <input type="text" name="_gotcha" style="display:none">
+
+          <button type="submit" class="w-full btn-primary py-4 text-base">POST REVIEW ✍️</button>
+        </form>
+
+        <!-- Success message (hidden initially) -->
+        <div id="reviewSuccess" class="hidden mt-6 p-5 bg-gold/10 border border-gold/30 rounded-2xl text-center">
+          <div class="text-3xl mb-2">🎉</div>
+          <p class="text-gold font-bold text-sm mb-1">Thank you for your review!</p>
+          <p class="text-gray-400 text-xs">Your review has been added to the page.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA STRIP ============ -->
+  <section class="py-14 px-6 bg-[#ffd93d]" data-aos="fade-up">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="font-display text-4xl md:text-5xl text-ink mb-4">READY TO ORDER?</h2>
+      <p class="text-ink/60 text-sm mb-8">Browse the full shop and grab your vibe.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="./shop.html" class="btn-dark">BROWSE SHOP →</a>
+        <a href="./drops.html" class="btn-outline-dark">SEE LIMITED DROPS →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-ink text-cream text-center py-12 px-6">
+    <div class="font-display text-gold text-4xl tracking-[8px] mb-4">BYJAY</div>
+    <p class="text-gray-500 text-xs mb-1">© 2025 BYJAY — All Rights Reserved</p>
+    <p class="text-gray-500 text-xs mb-6">Made with 💛 in Manila</p>
+    <div class="flex justify-center gap-6">
+      <a href="https://www.instagram.com/byjayy__" target="_blank" class="text-gold text-xs font-bold tracking-widest hover:text-gold-light transition-colors">INSTAGRAM</a>
+      <a href="https://www.tiktok.com/@byjayyy__" target="_blank" class="text-gold text-xs font-bold tracking-widests hover:text-gold-light transition-colors">TIKTOK</a>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({ once: true, offset: 60 });
+
+    // Mobile menu
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+
+    // ============ REVIEW DATA ============
+    // In-memory store (seed reviews + any submitted this session)
+    const reviews = [
+      { name: '@mikael_p',      stars: 5, text: 'The Spider-Man pin is so detailed! Shipped super fast too. Will definitely order again!', item: 'Spider-Man Bracelet',    date: 'Nov 2024', verified: true },
+      { name: '@cla.ire',       stars: 5, text: "Got the Rapunzel charm bracelet and it's absolutely gorgeous. 10/10 packaging!",          item: 'Rapunzel Charm Watch',   date: 'Dec 2024', verified: true },
+      { name: '@racingfan_ph',  stars: 4, text: 'Love the F1 edition pins! Great quality. Slight delay but worth the wait.',               item: 'F1 Edition Bracelet',    date: 'Jan 2025', verified: true },
+    ];
+
+    // ============ RENDER BREAKDOWN BARS ============
+    function renderBreakdown() {
+      const total = reviews.length;
+      const counts = [0, 0, 0, 0, 0]; // index 0 = 1-star, index 4 = 5-star
+      reviews.forEach(r => counts[r.stars - 1]++);
+
+      const avg = total ? (reviews.reduce((s, r) => s + r.stars, 0) / total).toFixed(1) : '0.0';
+      document.getElementById('overallScore').textContent = avg;
+      document.getElementById('totalReviews').textContent = `Based on ${total} review${total !== 1 ? 's' : ''}`;
+
+      const starsFull = Math.round(parseFloat(avg));
+      document.getElementById('overallStars').textContent = '★'.repeat(starsFull) + '☆'.repeat(5 - starsFull);
+
+      const container = document.getElementById('ratingBreakdown');
+      container.innerHTML = '';
+      for (let s = 5; s >= 1; s--) {
+        const pct = total ? Math.round((counts[s - 1] / total) * 100) : 0;
+        container.innerHTML += `
+          <div class="flex items-center gap-3">
+            <span class="text-gold text-sm font-bold w-4 shrink-0">${s}</span>
+            <span class="text-gold text-xs">★</span>
+            <div class="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+              <div class="rating-bar-fill" style="width:${pct}%"></div>
+            </div>
+            <span class="text-gray-400 text-xs w-8 text-right">${counts[s - 1]}</span>
+          </div>`;
+      }
+    }
+
+    // ============ RENDER REVIEWS GRID ============
+    function renderReviews(filterStars = 'all', newIdx = null) {
+      const grid = document.getElementById('reviewsGrid');
+
+      // If rendering a new review only (append), skip full re-render
+      if (newIdx !== null) {
+        const r = reviews[newIdx];
+        const card = buildCard(r, true);
+        grid.insertBefore(card, grid.firstChild);
+        updateCount();
+        return;
+      }
+
+      // Full render
+      grid.innerHTML = '';
+      const filtered = filterStars === 'all'
+        ? reviews
+        : reviews.filter(r => r.stars === parseInt(filterStars));
+
+      filtered.forEach((r, i) => {
+        const card = buildCard(r, false);
+        card.setAttribute('data-aos', 'fade-up');
+        card.setAttribute('data-aos-delay', String(i * 60));
+        grid.appendChild(card);
+      });
+
+      document.getElementById('reviewsEmpty').classList.toggle('hidden', filtered.length > 0);
+      document.getElementById('reviewCountNum').textContent = filtered.length;
+    }
+
+    function buildCard(r, isNew) {
+      const starsStr = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
+      const div = document.createElement('div');
+      div.className = `review-card-full bg-gray-50 border border-gray-100 rounded-2xl p-6 transition-all duration-200 hover:border-gold hover:-translate-y-1${isNew ? ' review-new' : ''}`;
+      div.dataset.stars = r.stars;
+      div.innerHTML = `
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="text-gold text-xl tracking-widest mb-1">${starsStr}</div>
+            <p class="font-bold text-sm text-ink">${escHtml(r.name)}</p>
+          </div>
+          ${r.verified ? '<span class="verified-badge">✓ Verified</span>' : '<span class="text-gray-400 text-xs">Community</span>'}
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">"${escHtml(r.text)}"</p>
+        <div class="flex items-center justify-between">
+          <p class="text-gray-400 text-xs">${r.item ? escHtml(r.item) : ''}</p>
+          <p class="text-gray-300 text-xs">${r.date}</p>
+        </div>`;
+      return div;
+    }
+
+    function escHtml(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function updateCount() {
+      document.getElementById('reviewCountNum').textContent = reviews.length;
+      document.getElementById('totalReviews').textContent = `Based on ${reviews.length} review${reviews.length !== 1 ? 's' : ''}`;
+    }
+
+    // ============ FILTER ============
+    let currentStarFilter = 'all';
+
+    function setReviewFilter(stars) {
+      currentStarFilter = stars;
+      document.querySelectorAll('.review-pill').forEach(p => {
+        p.classList.toggle('active', p.dataset.stars === stars);
+      });
+      renderReviews(stars);
+    }
+
+    document.querySelectorAll('.review-pill').forEach(pill => {
+      pill.addEventListener('click', () => setReviewFilter(pill.dataset.stars));
+    });
+
+    // ============ STAR RATING LABEL ============
+    const starLabels = { '1': '😞 Terrible', '2': '😐 Poor', '3': '🙂 Okay', '4': '😊 Great!', '5': '🤩 Excellent!' };
+    document.querySelectorAll('.star-input-row input[type="radio"]').forEach(input => {
+      input.addEventListener('change', () => {
+        document.getElementById('starHint').textContent = starLabels[input.value] || '';
+      });
+    });
+
+    // ============ SUBMIT REVIEW ============
+    function submitReview(e) {
+      e.preventDefault();
+
+      const name  = document.getElementById('rName').value.trim();
+      const item  = document.getElementById('rItem').value;
+      const text  = document.getElementById('rText').value.trim();
+      const starInput = document.querySelector('.star-input-row input[type="radio"]:checked');
+
+      if (!name || !text || !starInput) {
+        // Shake the form gently if something is missing
+        const form = document.getElementById('reviewForm');
+        form.style.animation = 'none';
+        setTimeout(() => {
+          form.style.animation = '';
+        }, 10);
+        if (!starInput) {
+          document.getElementById('starHint').textContent = '⚠️ Please select a star rating';
+          document.getElementById('starHint').style.color = '#ff6b6b';
+        }
+        return;
+      }
+
+      const stars = parseInt(starInput.value);
+      const now = new Date();
+      const dateStr = now.toLocaleString('en-PH', { month: 'short', year: 'numeric' });
+
+      const newReview = { name, stars, text, item: item || '', date: dateStr, verified: false };
+      reviews.unshift(newReview); // add to front
+
+      // Re-render breakdown
+      renderBreakdown();
+
+      // Append card at top of grid (respect current filter)
+      if (currentStarFilter === 'all' || parseInt(currentStarFilter) === stars) {
+        renderReviews(currentStarFilter, 0);
+      }
+
+      // Show success
+      document.getElementById('reviewForm').classList.add('hidden');
+      document.getElementById('reviewSuccess').classList.remove('hidden');
+
+      // Reset after 5s
+      setTimeout(() => {
+        document.getElementById('reviewForm').reset();
+        document.getElementById('starHint').textContent = 'Click a star to rate';
+        document.getElementById('starHint').style.color = '';
+        document.getElementById('reviewForm').classList.remove('hidden');
+        document.getElementById('reviewSuccess').classList.add('hidden');
+      }, 5000);
+    }
+
+    // ============ INIT ============
+    renderBreakdown();
+    // Don't call renderReviews on init — seed cards are already in the HTML
+    // (avoids duplicates; JS only appends new ones)
+  </script>
+
+</body>
+</html>

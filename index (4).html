@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BYJAY — Pins & Charms, Manila</title>
+  <meta name="description" content="Handpicked pins and Italian charm bracelets from Manila. Shop limited drops, custom designs, and curated collections.">
+  <meta name="keywords" content="pins, charms, italian charms, bracelet, manila, philippines, custom pins, byjay">
+  <meta property="og:title" content="BYJAY — Pins & Charms">
+  <meta property="og:description" content="Handpicked pins & Italian charms from Manila 📍">
+  <meta property="og:type" content="website">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Bebas Neue (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet">
+
+  <!-- AOS scroll animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#c9a84c',
+            'gold-light': '#e0c060',
+            ink: '#111111',
+            cream: '#f0e6c8',
+            plum: '#7b5ea7',
+            midnight: '#1a1a2e',
+          },
+          fontFamily: {
+            display: ['Bebas Neue', 'sans-serif'],
+            body: ['DM Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ===== HERO TEXT LEGIBILITY ===== */
+    #home h1 {
+      text-shadow: 0 2px 20px rgba(0,0,0,0.65);
+    }
+    /* Gold span in hero headline */
+    #home h1 .text-gold {
+      text-shadow: 0 0 36px rgba(201,168,76,0.6), 0 0 12px rgba(201,168,76,0.3), 0 2px 8px rgba(0,0,0,0.5);
+    }
+    #home p.text-cream\/60 {
+      text-shadow: 0 1px 10px rgba(0,0,0,0.5);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+    /* Drop card product names */
+    .drop-card p.font-bold { text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+    /* Reviews section on dark bg */
+    section.bg-ink .font-display.text-cream {
+      text-shadow: 0 2px 24px rgba(0,0,0,0.7);
+    }
+    section.bg-ink .text-gold.text-xs {
+      text-shadow: 0 0 18px rgba(201,168,76,0.5);
+    }
+    /* Italic review quotes */
+    .review-preview-card p.italic {
+      font-style: italic;
+      color: rgba(200,200,200,0.9);
+      line-height: 1.7;
+    }
+    /* Gold BYJAY logo glow in header */
+    header .font-display.text-gold {
+      text-shadow: 0 0 20px rgba(201,168,76,0.35);
+    }
+    /* Loader logo glow */
+    #loader .font-display {
+      text-shadow: 0 0 48px rgba(201,168,76,0.65), 0 0 96px rgba(201,168,76,0.2);
+    }
+    /* Step dots on thank-you glow */
+    .step-dot {
+      box-shadow: 0 2px 12px rgba(201,168,76,0.35);
+    }
+  </style>
+</head>
+<body class="font-body bg-white text-ink overflow-x-hidden">
+
+  <!-- LOADING SCREEN -->
+  <div id="loader" class="fixed inset-0 bg-ink z-[999] flex items-center justify-center transition-opacity duration-500">
+    <div class="text-center">
+      <div class="font-display text-gold text-7xl tracking-widest animate-pulse">BYJAY</div>
+      <div class="text-cream text-sm tracking-[4px] mt-2 opacity-60">LOADING YOUR VIBE...</div>
+    </div>
+  </div>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar">
+    📌 FREE SHIPPING on PHP 500+ · 🔥 F1 Limited Pins DROPPING NOW · ✦ Manila-based, ships nationwide · 📌 FREE SHIPPING on PHP 500+ · 🔥 F1 Limited Pins DROPPING NOW · ✦ Manila-based, ships nationwide
+  </div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-ink border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="./index.html" class="font-display text-gold text-3xl tracking-[6px]">BYJAY</a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="./index.html" class="nav-link active text-cream text-sm tracking-widest hover:text-gold transition-colors">HOME</a>
+        <a href="./drops.html" class="nav-link text-cream text-sm tracking-widest hover:text-gold transition-colors">LIMITED DROPS</a>
+        <a href="./shop.html" class="nav-link text-cream text-sm tracking-widest hover:text-gold transition-colors">SHOP</a>
+        <a href="./reviews.html" class="nav-link text-cream text-sm tracking-widest hover:text-gold transition-colors">REVIEWS</a>
+        <a href="#contact" class="nav-link text-cream text-sm tracking-widest hover:text-gold transition-colors">CONTACT</a>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <button id="menuBtn" class="md:hidden text-cream focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-ink border-t border-white/10 px-6 py-4 flex flex-col gap-4">
+      <a href="./index.html" class="text-cream text-sm tracking-widest hover:text-gold transition-colors">HOME</a>
+      <a href="./drops.html" class="text-cream text-sm tracking-widest hover:text-gold transition-colors">LIMITED DROPS</a>
+      <a href="./shop.html" class="text-cream text-sm tracking-widest hover:text-gold transition-colors">SHOP</a>
+      <a href="./reviews.html" class="text-cream text-sm tracking-widest hover:text-gold transition-colors">REVIEWS</a>
+      <a href="#contact" class="text-cream text-sm tracking-widest hover:text-gold transition-colors">CONTACT</a>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="home" class="hero-bg min-h-[90vh] flex items-center relative overflow-hidden">
+    <!-- Background texture -->
+    <div class="absolute inset-0 bg-midnight opacity-95"></div>
+    <div class="noise-overlay absolute inset-0 opacity-[0.04]"></div>
+
+    <!-- Decorative circles -->
+    <div class="absolute top-10 right-8 w-64 h-64 rounded-full border border-gold/20 animate-spin-slow"></div>
+    <div class="absolute bottom-10 right-24 w-40 h-40 rounded-full border border-plum/30"></div>
+    <div class="absolute top-1/2 right-16 w-96 h-96 rounded-full bg-gold/5 blur-3xl"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-12 w-full py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+      <!-- Text -->
+      <div data-aos="fade-right" data-aos-duration="800">
+        <p class="text-gold text-xs tracking-[4px] mb-4 font-bold">📍 MANILA-BASED · SHIPS NATIONWIDE</p>
+        <h1 class="font-display text-cream leading-none" style="font-size: clamp(70px, 10vw, 130px);">
+          WEAR<br>YOUR<br><span class="text-gold">VIBE.</span>
+        </h1>
+        <p class="text-cream/60 text-lg mt-6 mb-8 max-w-md leading-relaxed">
+          Collector-worthy pins & Italian charm bracelets — curated for the obsessives, the aesthetic girlie, and the vibe-conscious. F1, Disney, Sanrio, and more.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="./shop.html" class="btn-primary">SHOP ALL DESIGNS</a>
+          <a href="./drops.html" class="btn-secondary">🔥 LIMITED DROPS</a>
+        </div>
+      </div>
+
+      <!-- Floating Pin Stack -->
+      <div class="hidden lg:flex items-center justify-center gap-5" data-aos="fade-left" data-aos-duration="900" data-aos-delay="100">
+        <div class="flex flex-col gap-5">
+          <div class="pin-float w-28 h-28 rounded-full border-4 border-gold bg-midnight/80 overflow-hidden shadow-2xl" style="animation-delay: 0s">
+            <img src="snoopy.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.display='none'">
+          </div>
+          <div class="pin-float w-20 h-20 rounded-full border-4 border-plum bg-midnight/80 overflow-hidden shadow-xl" style="animation-delay: 0.5s">
+            <img src="sanrio.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.display='none'">
+          </div>
+        </div>
+        <div class="flex flex-col gap-5">
+          <div class="pin-float w-36 h-36 rounded-full border-4 border-gold bg-midnight/80 overflow-hidden shadow-2xl" style="animation-delay: 0.3s">
+            <img src="f1.png" alt="" class="w-full h-full object-cover" onerror="this.style.display='none'">
+          </div>
+          <div class="pin-float w-24 h-24 rounded-full border-4 border-gold/50 bg-midnight/80 overflow-hidden shadow-xl" style="animation-delay: 0.7s">
+            <img src="smiski.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.display='none'">
+          </div>
+        </div>
+        <div class="flex flex-col gap-5">
+          <div class="pin-float w-22 h-22 rounded-full border-4 border-plum bg-midnight/80 overflow-hidden shadow-xl" style="animation-delay: 0.2s" style="width:88px;height:88px">
+            <img src="hirono1.webp" alt="" class="w-full h-full object-cover" onerror="this.style.display='none'">
+          </div>
+          <div class="pin-float w-32 h-32 rounded-full border-4 border-gold bg-midnight/80 overflow-hidden shadow-2xl" style="animation-delay: 0.6s">
+            <img src="spiderman.png" alt="" class="w-full h-full object-cover" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cream/40 text-xs tracking-widest animate-bounce">
+      <span>SCROLL</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ TRUST BAR ============ -->
+  <div class="bg-white border-y border-gray-100 py-6">
+    <div class="max-w-5xl mx-auto px-6 flex flex-wrap items-center justify-center gap-10 text-center">
+      <div>
+        <div class="text-2xl mb-1">📦</div>
+        <div class="text-xs font-bold tracking-widest text-ink">FREE SHIPPING</div>
+        <div class="text-xs text-gray-400">Orders PHP 500+</div>
+      </div>
+      <div class="w-px h-10 bg-gray-100 hidden sm:block"></div>
+      <div>
+        <div class="text-2xl mb-1">✨</div>
+        <div class="text-xs font-bold tracking-widest text-ink">ITALIAN CHARMS</div>
+        <div class="text-xs text-gray-400">Collector Quality</div>
+      </div>
+      <div class="w-px h-10 bg-gray-100 hidden sm:block"></div>
+      <div>
+        <div class="text-2xl mb-1">🎨</div>
+        <div class="text-xs font-bold tracking-widest text-ink">CUSTOM ORDERS</div>
+        <div class="text-xs text-gray-400">Request any theme</div>
+      </div>
+      <div class="w-px h-10 bg-gray-100 hidden sm:block"></div>
+      <div>
+        <div class="text-2xl mb-1">🇵🇭</div>
+        <div class="text-xs font-bold tracking-widest text-ink">MANILA BASED</div>
+        <div class="text-xs text-gray-400">Ships Nationwide</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FEATURED DROPS ============ -->
+  <section class="py-20 px-6 bg-white max-w-7xl mx-auto">
+    <div class="flex items-end justify-between mb-12" data-aos="fade-up">
+      <div>
+        <p class="text-gold text-xs tracking-[4px] font-bold mb-2">DON'T SLEEP</p>
+        <h2 class="font-display text-5xl md:text-6xl text-ink">FEATURED DROPS</h2>
+      </div>
+      <a href="./drops.html" class="hidden sm:inline-block btn-outline-dark">VIEW ALL →</a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Card 1 -->
+      <div class="drop-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="relative rounded-2xl overflow-hidden bg-midnight border border-gold/30 group">
+          <div class="absolute top-3 right-3 z-10 badge-gold">LIMITED</div>
+          <div class="h-48 overflow-hidden flex items-center justify-center bg-midnight/80 p-4">
+            <img src="f1.png" alt="F1 Bracelet" class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110" onerror="this.parentElement.style.background='#2a2a3e'">
+          </div>
+          <div class="p-5">
+            <p class="text-cream font-bold text-sm mb-1">Formula 1 Edition Bracelet</p>
+            <p class="text-gray-400 text-xs mb-3">Italian Charm · Big 6 Teams</p>
+            <div class="flex items-center justify-between">
+              <span class="text-gold font-bold text-lg">PHP 999</span>
+              <button onclick="openOrderModal('Formula 1 Edition Bracelet','PHP 999')" class="btn-deal-sm">ORDER</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="drop-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="relative rounded-2xl overflow-hidden bg-[#2d1b4e] border border-plum/50 group">
+          <div class="absolute top-3 right-3 z-10 badge-plum">NEW</div>
+          <div class="h-48 overflow-hidden flex items-center justify-center p-4">
+            <img src="rapunzel.png" alt="Rapunzel Charm" class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110" onerror="this.parentElement.style.background='#3d2b5e'">
+          </div>
+          <div class="p-5">
+            <p class="text-cream font-bold text-sm mb-1">Rapunzel Charm Watch</p>
+            <p class="text-gray-400 text-xs mb-3">Disney Edition · Italian Charm</p>
+            <div class="flex items-center justify-between">
+              <span class="text-[#b99cff] font-bold text-lg">PHP 999</span>
+              <button onclick="openOrderModal('Rapunzel Charm Watch','PHP 999')" class="btn-deal-sm btn-plum">ORDER</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="drop-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="relative rounded-2xl overflow-hidden bg-[#2e1a1a] border border-red-700/40 group">
+          <div class="absolute top-3 right-3 z-10 badge-red">HOT</div>
+          <div class="h-48 overflow-hidden flex items-center justify-center p-4">
+            <img src="spiderman.png" alt="Spider-Man" class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110" onerror="this.parentElement.style.background='#3e2a2a'">
+          </div>
+          <div class="p-5">
+            <p class="text-cream font-bold text-sm mb-1">Amazing Spider-Man Bracelet</p>
+            <p class="text-gray-400 text-xs mb-3">Italian Charm · Marvel</p>
+            <div class="flex items-center justify-between">
+              <span class="text-red-400 font-bold text-lg">PHP 850</span>
+              <button onclick="openOrderModal('Amazing Spider-Man Bracelet','PHP 850')" class="btn-deal-sm btn-red">ORDER</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="drop-card" data-aos="fade-up" data-aos-delay="240">
+        <div class="relative rounded-2xl overflow-hidden bg-midnight border border-gold/30 group">
+          <div class="absolute top-3 right-3 z-10 badge-gold">COLLAB</div>
+          <div class="h-48 overflow-hidden flex items-center justify-center p-4">
+            <img src="linked.png" alt="Linked in Love" class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110" onerror="this.parentElement.style.background='#2a2a3e'">
+          </div>
+          <div class="p-5">
+            <p class="text-cream font-bold text-sm mb-1">Linked in Love Set</p>
+            <p class="text-gray-400 text-xs mb-3">Couple Charm Bracelets</p>
+            <div class="flex items-center justify-between">
+              <span class="text-gold font-bold text-lg">PHP 1,200</span>
+              <button onclick="openOrderModal('Linked in Love Set','PHP 1,200')" class="btn-deal-sm">ORDER</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-8 sm:hidden">
+      <a href="./drops.html" class="btn-outline-dark">VIEW ALL DROPS →</a>
+    </div>
+  </section>
+
+  <!-- ============ TAGLINE STRIP ============ -->
+  <div class="bg-gold py-8 overflow-hidden">
+    <div class="marquee-track whitespace-nowrap font-display text-ink text-4xl tracking-widest">
+      <span>WEAR YOUR VIBE. ✦ PIN IT. WEAR IT. OWN IT. ✦ CURATED PINS FROM MNL. ✦ WEAR YOUR VIBE. ✦ PIN IT. WEAR IT. OWN IT. ✦ CURATED PINS FROM MNL. ✦</span>
+    </div>
+  </div>
+
+  <!-- ============ WHY BYJAY ============ -->
+  <section class="py-20 px-6 bg-white">
+    <div class="max-w-5xl mx-auto text-center">
+      <p class="text-gold text-xs tracking-[4px] font-bold mb-3" data-aos="fade-up">THE REASON</p>
+      <h2 class="font-display text-5xl md:text-6xl text-ink mb-3" data-aos="fade-up" data-aos-delay="50">WHY BYJAY?</h2>
+      <p class="text-gray-400 mb-14" data-aos="fade-up" data-aos-delay="100">Because basic is boring.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="why-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="text-5xl mb-5">📌</div>
+          <h3 class="font-bold text-lg text-ink mb-3">Curated Pins</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Each pin is sourced with the collector's eye — no mass-produced boring pieces, only designs that actually slap.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="text-5xl mb-5">✨</div>
+          <h3 class="font-bold text-lg text-ink mb-3">Quality Charms</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Precision-linked Italian charms — smooth finish, crisp prints, built for daily wear and flex. Because your wrist deserves art.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-5xl mb-5">💛</div>
+          <h3 class="font-bold text-lg text-ink mb-3">Full of Personality</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Formula 1 nights, Disney days, Sanrio everything — your aesthetic, your rules. We've got the pin for every chapter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MINI SHOP PREVIEW ============ -->
+  <section class="py-20 px-6 bg-[#ffd93d] relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 20% 50%, #fff 0%, transparent 50%), radial-gradient(circle at 80% 20%, #c9a84c 0%, transparent 50%)"></div>
+    <div class="max-w-6xl mx-auto relative">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="font-display text-5xl md:text-6xl text-ink mb-2">PICK YOUR VIBE</h2>
+        <p class="text-ink/60 text-sm tracking-wide">Browse all collections in the shop</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+        <a href="shop.html?cat=snoopy" class="vibe-preview-card" data-aos="zoom-in" data-aos-delay="0">
+          <div class="vibe-preview-img"><img src="snoopy.jpg" alt="Snoopy" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
+          <span>Snoopy</span>
+        </a>
+        <a href="shop.html?cat=music" class="vibe-preview-card" data-aos="zoom-in" data-aos-delay="60">
+          <div class="vibe-preview-img"><img src="cd1.jpg" alt="Music" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
+          <span>Music</span>
+        </a>
+        <a href="shop.html?cat=hirono" class="vibe-preview-card" data-aos="zoom-in" data-aos-delay="120">
+          <div class="vibe-preview-img"><img src="hirono1.webp" alt="Hirono" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
+          <span>Hirono</span>
+        </a>
+        <a href="shop.html?cat=quotes" class="vibe-preview-card" data-aos="zoom-in" data-aos-delay="180">
+          <div class="vibe-preview-img"><img src="quotes1.webp" alt="Quotes" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
+          <span>Quotes</span>
+        </a>
+        <a href="shop.html?cat=smiski" class="vibe-preview-card" data-aos="zoom-in" data-aos-delay="240">
+          <div class="vibe-preview-img"><img src="smiski.jpg" alt="Smiski" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
+          <span>Smiski</span>
+        </a>
+        <a href="shop.html?cat=sanrio" class="vibe-preview-card" data-aos="zoom-in" data-aos-delay="300">
+          <div class="vibe-preview-img"><img src="sanrio.jpg" alt="Sanrio" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
+          <span>Sanrio</span>
+        </a>
+      </div>
+
+      <div class="text-center mt-10" data-aos="fade-up">
+        <a href="./shop.html" class="btn-dark">BROWSE FULL SHOP →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MINI REVIEWS PREVIEW ============ -->
+  <section class="py-20 px-6 bg-ink">
+    <div class="max-w-5xl mx-auto text-center">
+      <p class="text-gold text-xs tracking-[4px] font-bold mb-3" data-aos="fade-up">PINNED BY THE COMMUNITY</p>
+      <h2 class="font-display text-5xl md:text-6xl text-cream mb-12" data-aos="fade-up" data-aos-delay="50">CUSTOMER LOVE</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <div class="review-preview-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="stars-gold mb-3">★★★★★</div>
+          <p class="text-gray-300 text-sm italic leading-relaxed mb-4">"The Spider-Man pin is so detailed! Shipped super fast too. Will definitely order again!"</p>
+          <p class="text-plum text-xs font-bold">— @mikael_p</p>
+        </div>
+        <div class="review-preview-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="stars-gold mb-3">★★★★★</div>
+          <p class="text-gray-300 text-sm italic leading-relaxed mb-4">"Got the Rapunzel charm bracelet and it's absolutely gorgeous. 10/10 packaging!"</p>
+          <p class="text-plum text-xs font-bold">— @cla.ire</p>
+        </div>
+        <div class="review-preview-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="stars-gold mb-3">★★★★☆</div>
+          <p class="text-gray-300 text-sm italic leading-relaxed mb-4">"Love the F1 edition pins! Great quality. Slight delay but worth the wait."</p>
+          <p class="text-plum text-xs font-bold">— @racingfan_ph</p>
+        </div>
+      </div>
+
+      <a href="./reviews.html" class="btn-primary">READ ALL REVIEWS →</a>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="py-20 px-6 bg-[#ffd93d]">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="font-display text-5xl md:text-6xl text-ink">FIND US HERE</h2>
+        <p class="text-ink/60 mt-2 text-sm">Tap a card to reach us on socials or send a message!</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <a href="https://www.instagram.com/byjayy__" target="_blank" class="contact-tile" style="background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045)" data-aos="flip-left" data-aos-delay="0">
+          <div class="text-4xl mb-3">📸</div>
+          <h3 class="font-bold text-base mb-1">Instagram</h3>
+          <p class="text-xs opacity-80 mb-3">@byjayy__</p>
+          <span class="text-xs font-bold tracking-wide opacity-90">Open Instagram →</span>
+        </a>
+        <a href="https://www.tiktok.com/@byjayyy__" target="_blank" class="contact-tile bg-black border border-white/10" data-aos="flip-left" data-aos-delay="80">
+          <div class="text-4xl mb-3">🎵</div>
+          <h3 class="font-bold text-base mb-1">TikTok</h3>
+          <p class="text-xs opacity-80 mb-3">@byjayyy__</p>
+          <span class="text-xs font-bold tracking-wide opacity-90">Open TikTok →</span>
+        </a>
+        <a href="https://ig.me/m/byjayy__" target="_blank" class="contact-tile bg-[#1877f2]" data-aos="flip-left" data-aos-delay="160">
+          <div class="text-4xl mb-3">💬</div>
+          <h3 class="font-bold text-base mb-1">Message Us</h3>
+          <p class="text-xs opacity-80 mb-3">DM to place order</p>
+          <span class="text-xs font-bold tracking-wide opacity-90">Send a Message →</span>
+        </a>
+        <div class="contact-tile bg-ink border border-gold/50" data-aos="flip-left" data-aos-delay="240">
+          <div class="text-4xl mb-3">📍</div>
+          <h3 class="font-bold text-base mb-1">Location</h3>
+          <p class="text-xs opacity-80 mb-3">Manila, Philippines</p>
+          <span class="text-xs font-bold tracking-wide text-gold">MNL Based 🇵🇭</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-ink text-cream text-center py-12 px-6">
+    <div class="font-display text-gold text-4xl tracking-[8px] mb-4">BYJAY</div>
+    <p class="text-gray-500 text-xs mb-1">© 2025 BYJAY — Pins & Charms, Manila. All Rights Reserved.</p>
+    <p class="text-gray-500 text-xs mb-6">Made with 💛 in Manila</p>
+    <div class="flex justify-center gap-6">
+      <a href="https://www.instagram.com/byjayy__" target="_blank" class="text-gold text-xs font-bold tracking-widest hover:text-gold-light transition-colors">INSTAGRAM</a>
+      <a href="https://www.tiktok.com/@byjayyy__" target="_blank" class="text-gold text-xs font-bold tracking-widest hover:text-gold-light transition-colors">TIKTOK</a>
+    </div>
+  </footer>
+
+  <!-- ============ ORDER MODAL ============ -->
+  <div id="orderModal" class="fixed inset-0 z-[200] hidden items-center justify-center p-4">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeOrderModal()"></div>
+
+    <!-- Modal Box -->
+    <div class="relative bg-ink border border-gold/30 rounded-3xl w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-2xl" data-aos="zoom-in">
+      <div class="p-8">
+        <!-- Header -->
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <h2 class="font-display text-3xl text-gold">PLACE ORDER</h2>
+            <p class="text-gray-400 text-sm mt-1">Fill in your details and we'll get back to you via DM 💬</p>
+          </div>
+          <button onclick="closeOrderModal()" class="text-gray-400 hover:text-cream transition-colors mt-1">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <!-- Formspree Form -->
+        <!-- 🔧 SETUP: Replace "YOUR_FORMSPREE_ID" with your actual Formspree form ID from formspree.io -->
+        <form id="orderForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" onsubmit="handleOrderSubmit(event)">
+
+          <!-- Item (pre-filled, read-only display) -->
+          <div class="mb-4">
+            <label class="form-label">Item Selected</label>
+            <input type="text" id="modalItemName" name="item" readonly class="form-input bg-white/5 cursor-default" placeholder="Item name">
+          </div>
+          <div class="mb-5">
+            <label class="form-label">Price</label>
+            <input type="text" id="modalItemPrice" name="price" readonly class="form-input bg-white/5 cursor-default" placeholder="Price">
+          </div>
+
+          <!-- Customer Info -->
+          <div class="mb-4">
+            <label class="form-label">Your Name *</label>
+            <input type="text" name="name" required class="form-input" placeholder="e.g. Maria Santos">
+          </div>
+          <div class="mb-4">
+            <label class="form-label">Instagram / Contact *</label>
+            <input type="text" name="contact" required class="form-input" placeholder="@yourhandle or +63 912 345 6789">
+          </div>
+          <div class="mb-4">
+            <label class="form-label">Quantity *</label>
+            <input type="number" name="quantity" min="1" value="1" required class="form-input" placeholder="1">
+          </div>
+
+          <!-- Delivery -->
+          <div class="mb-4">
+            <label class="form-label">Preferred Pickup / Delivery Date</label>
+            <input type="date" name="preferred_date" class="form-input">
+          </div>
+          <div class="mb-4">
+            <label class="form-label">Delivery Method</label>
+            <select name="delivery_method" class="form-input">
+              <option value="pickup">Pickup (Manila)</option>
+              <option value="lalamove">Lalamove / GrabExpress</option>
+              <option value="jnt">J&T Express</option>
+              <option value="lbc">LBC</option>
+            </select>
+          </div>
+
+          <!-- Customization -->
+          <div class="mb-4 p-4 rounded-xl border border-gold/20 bg-white/5">
+            <label class="form-label text-gold">🎨 Customize This Item</label>
+            <p class="text-gray-400 text-xs mb-3">Want a specific color, text, size, or add-on? Describe it below.</p>
+            <textarea name="customization" rows="3" class="form-input" placeholder="e.g. Can I get this in silver instead of gold? Or add my initials?"></textarea>
+          </div>
+
+          <!-- Special Notes -->
+          <div class="mb-6">
+            <label class="form-label">Special Notes</label>
+            <textarea name="notes" rows="2" class="form-input" placeholder="Any other requests or questions..."></textarea>
+          </div>
+
+          <button type="submit" class="w-full btn-primary text-center py-4 text-base">SEND ORDER REQUEST 🛒</button>
+          <p class="text-gray-500 text-xs text-center mt-3">We'll confirm your order via DM within 24 hours.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- AOS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <script>
+    // Init AOS
+    AOS.init({ once: true, offset: 60 });
+
+    // Loader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const loader = document.getElementById('loader');
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500);
+      }, 800);
+    });
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Order Modal
+    function openOrderModal(itemName, itemPrice) {
+      document.getElementById('modalItemName').value = itemName || '';
+      document.getElementById('modalItemPrice').value = itemPrice || '';
+      const modal = document.getElementById('orderModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeOrderModal() {
+      const modal = document.getElementById('orderModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    function handleOrderSubmit(e) {
+      // If Formspree is configured, let it handle the submission
+      // Otherwise show a success message
+      const formspreeId = document.getElementById('orderForm').action;
+      if (formspreeId.includes('YOUR_FORMSPREE_ID')) {
+        e.preventDefault();
+        // Demo mode — show thank you
+        window.location.href = './thank-you.html';
+        return;
+      }
+      // Real submission — redirect after
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+        .then(r => r.json())
+        .then(() => { window.location.href = './thank-you.html'; })
+        .catch(() => { window.location.href = './thank-you.html'; });
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeOrderModal();
+    });
+  </script>
+
+</body>
+</html>
