@@ -1,3 +1,4 @@
+index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,7 +118,7 @@
       </nav>
 
       <!-- Mobile Hamburger -->
-      <button id="menuBtn" class="md:hidden text-cream focus:outline-none">
+      <button id="menuBtn" class="md:hidden text-cream focus:outline-none" aria-label="Open mobile menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -166,26 +167,26 @@
       <div class="hidden lg:flex items-center justify-center gap-5" data-aos="fade-left" data-aos-duration="900" data-aos-delay="100">
         <div class="flex flex-col gap-5">
           <div class="pin-float w-28 h-28 rounded-full border-4 border-gold bg-midnight/80 overflow-hidden shadow-2xl" style="animation-delay: 0s">
-            <img src="snoopy.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.display='none'">
+            <img src="snoopy.jpg" alt="Snoopy enamel pin in gold-rimmed circular frame" class="w-full h-full object-cover" onerror="this.style.display='none'">
           </div>
           <div class="pin-float w-20 h-20 rounded-full border-4 border-plum bg-midnight/80 overflow-hidden shadow-xl" style="animation-delay: 0.5s">
-            <img src="sanrio.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.display='none'">
+            <img src="sanrio.jpg" alt="Sanrio Hello Kitty enamel pin in plum-rimmed frame" class="w-full h-full object-cover" onerror="this.style.display='none'">
           </div>
         </div>
         <div class="flex flex-col gap-5">
           <div class="pin-float w-36 h-36 rounded-full border-4 border-gold bg-midnight/80 overflow-hidden shadow-2xl" style="animation-delay: 0.3s">
-            <img src="f1.png" alt="" class="w-full h-full object-cover" onerror="this.style.display='none'">
+            <img src="f1.png" alt="Formula 1 Italian charm bracelet in gold-rimmed frame" class="w-full h-full object-cover" onerror="this.style.display='none'">
           </div>
           <div class="pin-float w-24 h-24 rounded-full border-4 border-gold/50 bg-midnight/80 overflow-hidden shadow-xl" style="animation-delay: 0.7s">
-            <img src="smiski.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.display='none'">
+            <img src="smiski.jpg" alt="Smiski glow-in-the-dark figure pin" class="w-full h-full object-cover" onerror="this.style.display='none'">
           </div>
         </div>
         <div class="flex flex-col gap-5">
           <div class="pin-float w-22 h-22 rounded-full border-4 border-plum bg-midnight/80 overflow-hidden shadow-xl" style="animation-delay: 0.2s" style="width:88px;height:88px">
-            <img src="hirono1.webp" alt="" class="w-full h-full object-cover" onerror="this.style.display='none'">
+            <img src="hirono1.webp" alt="POP MART Hirono character enamel pin" class="w-full h-full object-cover" onerror="this.style.display='none'">
           </div>
           <div class="pin-float w-32 h-32 rounded-full border-4 border-gold bg-midnight/80 overflow-hidden shadow-2xl" style="animation-delay: 0.6s">
-            <img src="spiderman.png" alt="" class="w-full h-full object-cover" onerror="this.style.display='none'">
+            <img src="spiderman.png" alt="Spider-Man themed Italian charm bracelet" class="w-full h-full object-cover" onerror="this.style.display='none'">
           </div>
         </div>
       </div>
@@ -228,6 +229,9 @@
     </div>
   </div>
 
+  <!-- ============ DEAL OF THE DAY ============ -->
+  <div id="dotd-banner"></div>
+
   <!-- ============ FEATURED DROPS ============ -->
   <section class="py-20 px-6 bg-white max-w-7xl mx-auto">
     <div class="flex items-end justify-between mb-12" data-aos="fade-up">
@@ -245,7 +249,7 @@
         <div class="relative rounded-2xl overflow-hidden bg-midnight border border-gold/30 group">
           <div class="absolute top-3 right-3 z-10 badge-gold">LIMITED</div>
           <div class="h-48 overflow-hidden flex items-center justify-center bg-midnight/80 p-4">
-            <img src="f1.png" alt="F1 Bracelet" class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110" onerror="this.parentElement.style.background='#2a2a3e'">
+            <img src="f1.png" alt="Formula 1 Edition Italian charm bracelet featuring the Big 6 racing teams" class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110" onerror="this.parentElement.style.background='#2a2a3e'">
           </div>
           <div class="p-5">
             <p class="text-cream font-bold text-sm mb-1">Formula 1 Edition Bracelet</p>
@@ -263,7 +267,7 @@
         <div class="relative rounded-2xl overflow-hidden bg-[#2d1b4e] border border-plum/50 group">
           <div class="absolute top-3 right-3 z-10 badge-plum">NEW</div>
           <div class="h-48 overflow-hidden flex items-center justify-center p-4">
-            <img src="rapunzel.png" alt="Rapunzel Charm" class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110" onerror="this.parentElement.style.background='#3d2b5e'">
+            <img src="rapunzel.png" alt="Disney Rapunzel charm watch with purple and gold detailing" class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110" onerror="this.parentElement.style.background='#3d2b5e'">
           </div>
           <div class="p-5">
             <p class="text-cream font-bold text-sm mb-1">Rapunzel Charm Watch</p>
@@ -281,7 +285,7 @@
         <div class="relative rounded-2xl overflow-hidden bg-[#2e1a1a] border border-red-700/40 group">
           <div class="absolute top-3 right-3 z-10 badge-red">HOT</div>
           <div class="h-48 overflow-hidden flex items-center justify-center p-4">
-            <img src="spiderman.png" alt="Spider-Man" class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110" onerror="this.parentElement.style.background='#3e2a2a'">
+            <img src="spiderman.png" alt="Amazing Spider-Man Marvel Italian charm bracelet in red and black" class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110" onerror="this.parentElement.style.background='#3e2a2a'">
           </div>
           <div class="p-5">
             <p class="text-cream font-bold text-sm mb-1">Amazing Spider-Man Bracelet</p>
@@ -299,7 +303,7 @@
         <div class="relative rounded-2xl overflow-hidden bg-midnight border border-gold/30 group">
           <div class="absolute top-3 right-3 z-10 badge-gold">COLLAB</div>
           <div class="h-48 overflow-hidden flex items-center justify-center p-4">
-            <img src="linked.png" alt="Linked in Love" class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110" onerror="this.parentElement.style.background='#2a2a3e'">
+            <img src="linked.png" alt="Linked in Love collab charm bracelet set with paired photo charms" class="max-h-full object-contain transition-transform duration-500 group-hover:scale-110" onerror="this.parentElement.style.background='#2a2a3e'">
           </div>
           <div class="p-5">
             <p class="text-cream font-bold text-sm mb-1">Linked in Love Set</p>
@@ -364,27 +368,27 @@
 
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
         <a href="shop.html?cat=snoopy" class="vibe-preview-card" data-aos="zoom-in" data-aos-delay="0">
-          <div class="vibe-preview-img"><img src="snoopy.jpg" alt="Snoopy" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
+          <div class="vibe-preview-img"><img src="snoopy.jpg" alt="Snoopy collection category thumbnail" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
           <span>Snoopy</span>
         </a>
         <a href="shop.html?cat=music" class="vibe-preview-card" data-aos="zoom-in" data-aos-delay="60">
-          <div class="vibe-preview-img"><img src="cd1.jpg" alt="Music" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
+          <div class="vibe-preview-img"><img src="cd1.jpg" alt="Music-themed pins category thumbnail" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
           <span>Music</span>
         </a>
         <a href="shop.html?cat=hirono" class="vibe-preview-card" data-aos="zoom-in" data-aos-delay="120">
-          <div class="vibe-preview-img"><img src="hirono1.webp" alt="Hirono" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
+          <div class="vibe-preview-img"><img src="hirono1.webp" alt="Hirono collection category thumbnail" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
           <span>Hirono</span>
         </a>
         <a href="shop.html?cat=quotes" class="vibe-preview-card" data-aos="zoom-in" data-aos-delay="180">
-          <div class="vibe-preview-img"><img src="quotes1.webp" alt="Quotes" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
+          <div class="vibe-preview-img"><img src="quotes1.webp" alt="Quote pins category thumbnail" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
           <span>Quotes</span>
         </a>
         <a href="shop.html?cat=smiski" class="vibe-preview-card" data-aos="zoom-in" data-aos-delay="240">
-          <div class="vibe-preview-img"><img src="smiski.jpg" alt="Smiski" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
+          <div class="vibe-preview-img"><img src="smiski.jpg" alt="Smiski collection category thumbnail" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
           <span>Smiski</span>
         </a>
         <a href="shop.html?cat=sanrio" class="vibe-preview-card" data-aos="zoom-in" data-aos-delay="300">
-          <div class="vibe-preview-img"><img src="sanrio.jpg" alt="Sanrio" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
+          <div class="vibe-preview-img"><img src="sanrio.jpg" alt="Sanrio collection category thumbnail" class="w-full h-full object-cover" onerror="this.style.display='none'"></div>
           <span>Sanrio</span>
         </a>
       </div>
@@ -460,6 +464,27 @@
     </div>
   </section>
 
+  <!-- ============ NEWSLETTER ============ -->
+  <section class="py-16 px-6 bg-midnight relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-72 h-72 bg-gold/10 rounded-full blur-3xl -translate-x-1/3 -translate-y-1/3"></div>
+    <div class="absolute bottom-0 right-0 w-72 h-72 bg-plum/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
+    <div class="relative max-w-3xl mx-auto text-center" data-aos="fade-up">
+      <p class="text-gold text-xs tracking-[5px] font-bold mb-4">📬 STAY IN THE LOOP</p>
+      <h2 class="font-display text-cream text-5xl md:text-6xl mb-3 leading-none">JOIN THE LIST</h2>
+      <p class="text-cream/60 text-sm mb-8 max-w-md mx-auto leading-relaxed">
+        Get notified about limited drops, new arrivals, and subscriber-only deals before anyone else.
+      </p>
+      <form id="bj-newsletterForm" class="bj-newsletter-form" novalidate>
+        <input type="email" placeholder="your@email.com" required>
+        <button type="submit">SUBSCRIBE</button>
+      </form>
+      <div id="bj-newsletterSuccess" class="hidden mt-5 inline-block bg-gold/10 border border-gold/30 rounded-full px-6 py-2.5">
+        <p class="text-gold text-xs font-bold tracking-widest">🎉 YOU'RE ON THE LIST — TALK SOON!</p>
+      </div>
+      <p class="text-cream/30 text-xs mt-5">No spam. Unsubscribe anytime.</p>
+    </div>
+  </section>
+
   <!-- ============ FOOTER ============ -->
   <footer class="bg-ink text-cream text-center py-12 px-6">
     <div class="font-display text-gold text-4xl tracking-[8px] mb-4">BYJAY</div>
@@ -485,7 +510,7 @@
             <h2 class="font-display text-3xl text-gold">PLACE ORDER</h2>
             <p class="text-gray-400 text-sm mt-1">Fill in your details and we'll get back to you via DM 💬</p>
           </div>
-          <button onclick="closeOrderModal()" class="text-gray-400 hover:text-cream transition-colors mt-1">
+          <button onclick="closeOrderModal()" aria-label="Close order form" class="text-gray-400 hover:text-cream transition-colors mt-1">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
         </div>
@@ -618,6 +643,11 @@
       if (e.key === 'Escape') closeOrderModal();
     });
   </script>
+
+  <!-- BYJAY shop features: cart, wishlist, search, FAQ, newsletter -->
+  <script src="shop-features.js"></script>
+  <!-- BYJAY Deal of the Day: rotating daily discount -->
+  <script src="deal-of-the-day.js"></script>
 
 </body>
 </html>
