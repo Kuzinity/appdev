@@ -1,0 +1,363 @@
+admin.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BYJAY — Admin Dashboard</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Google Fonts to match the main site -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- ====================================================
+       LOGIN SCREEN
+       ==================================================== -->
+  <div id="loginScreen" class="login-screen">
+    <div id="loginCard" class="login-card">
+      <h1 class="login-logo">BYJAY</h1>
+      <p class="login-subtitle">ADMIN PANEL</p>
+
+      <form id="loginForm" class="login-form" autocomplete="off">
+        <input type="text" id="loginUser" class="login-input" placeholder="Username" autofocus>
+        <input type="password" id="loginPass" class="login-input" placeholder="Password">
+        <p id="loginError" class="login-error"></p>
+        <button type="submit" class="login-btn">SIGN IN →</button>
+      </form>
+
+      <div class="login-hint">
+        <strong>For demo:</strong><br>
+        Username: <code>byjay</code> · Password: <code>pinsforever</code>
+      </div>
+
+      <a href="./index.html" class="login-back">← BACK TO STORE</a>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       ADMIN LAYOUT (hidden until login)
+       ==================================================== -->
+  <div id="adminLayout" class="admin-layout" style="display: none;">
+
+    <!-- Mobile menu button -->
+    <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+
+    <!-- SIDEBAR -->
+    <aside id="adminSidebar" class="admin-sidebar">
+      <div class="sidebar-logo">
+        <h2 class="sidebar-logo-text">BYJAY</h2>
+        <p class="sidebar-logo-sub">ADMIN PANEL</p>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-tab="dashboard">
+          <span class="nav-item-icon">📊</span>
+          <span>Dashboard</span>
+        </button>
+        <button class="nav-item" data-tab="orders">
+          <span class="nav-item-icon">📦</span>
+          <span>Orders</span>
+          <span class="nav-item-badge" id="ordersBadge">0</span>
+        </button>
+        <button class="nav-item" data-tab="products">
+          <span class="nav-item-icon">🛍️</span>
+          <span>Products</span>
+        </button>
+        <button class="nav-item" data-tab="reviews">
+          <span class="nav-item-icon">💬</span>
+          <span>Reviews</span>
+          <span class="nav-item-badge" id="reviewsBadge">0</span>
+        </button>
+        <button class="nav-item" data-tab="messages">
+          <span class="nav-item-icon">💌</span>
+          <span>Messages</span>
+          <span class="nav-item-badge" id="messagesBadge">0</span>
+        </button>
+        <button class="nav-item" data-tab="newsletter">
+          <span class="nav-item-icon">📧</span>
+          <span>Newsletter</span>
+        </button>
+        <button class="nav-item" data-tab="settings">
+          <span class="nav-item-icon">⚙️</span>
+          <span>Settings</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="sidebar-user">
+          <div class="user-avatar">J</div>
+          <div>
+            <div style="color: var(--a-cream);"><strong>Jay</strong></div>
+            <div style="font-size: 10px;">Admin</div>
+          </div>
+        </div>
+        <button id="logoutBtn" class="logout-btn">LOGOUT</button>
+        <a href="./index.html" class="back-to-site">← VIEW STORE</a>
+      </div>
+    </aside>
+
+    <!-- MAIN PANEL -->
+    <main class="admin-main">
+
+      <!-- ============================================
+           DASHBOARD TAB
+           ============================================ -->
+      <section class="tab-content active" data-tab-panel="dashboard">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">DASHBOARD</h1>
+            <p class="page-subtitle">Welcome back, Jay. Here's how your store is doing.</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-outline" onclick="window.print()">🖨 Print Report</button>
+          </div>
+        </div>
+
+        <!-- Stat cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <p class="stat-label">Total Orders</p>
+            <h2 class="stat-value" id="statOrders">0</h2>
+            <p class="stat-trend">▲ all-time</p>
+            <div class="stat-icon">📦</div>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Revenue (PHP)</p>
+            <h2 class="stat-value" id="statRevenue">0</h2>
+            <p class="stat-trend">▲ all-time</p>
+            <div class="stat-icon">💰</div>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Products</p>
+            <h2 class="stat-value" id="statProducts">0</h2>
+            <p class="stat-trend" id="statProductsTrend">in catalog</p>
+            <div class="stat-icon">🛍️</div>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Reviews</p>
+            <h2 class="stat-value" id="statReviews">0</h2>
+            <p class="stat-trend" id="statReviewsTrend">avg ★★★★★</p>
+            <div class="stat-icon">💬</div>
+          </div>
+        </div>
+
+        <!-- Two-column section -->
+        <div class="two-col">
+          <div class="card">
+            <h3 class="section-title">
+              RECENT ORDERS
+              <button class="section-title-link" onclick="window.switchTab('orders')">VIEW ALL →</button>
+            </h3>
+            <div id="recentOrders" class="mini-list"></div>
+          </div>
+
+          <div class="card">
+            <h3 class="section-title">
+              RECENT REVIEWS
+              <button class="section-title-link" onclick="window.switchTab('reviews')">VIEW ALL →</button>
+            </h3>
+            <div id="recentReviews" class="mini-list"></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 18px;">
+          <h3 class="section-title">BEST-SELLING CATEGORIES</h3>
+          <div id="bestCategories"></div>
+        </div>
+      </section>
+
+      <!-- ============================================
+           ORDERS TAB
+           ============================================ -->
+      <section class="tab-content" data-tab-panel="orders">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">ORDERS</h1>
+            <p class="page-subtitle">All customer orders. Click a row to see items.</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-outline" onclick="window.adminExportOrders()">📥 Export CSV</button>
+            <button class="btn btn-danger" onclick="window.adminClearOrders()">🗑 Clear All</button>
+          </div>
+        </div>
+
+        <div id="ordersEmpty" class="empty-state" style="display: none;">
+          <div class="empty-state-icon">📦</div>
+          <h3>No orders yet</h3>
+          <p>When customers check out from the shop, their orders will appear here.</p>
+        </div>
+
+        <div id="ordersTableWrap" class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Order #</th>
+                <th>Date</th>
+                <th>Items</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="ordersTbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============================================
+           PRODUCTS TAB
+           ============================================ -->
+      <section class="tab-content" data-tab-panel="products">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">PRODUCTS</h1>
+            <p class="page-subtitle">Catalog overview. Toggle stock status for each item.</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-outline" onclick="window.adminResetStock()">↻ Reset all to in-stock</button>
+          </div>
+        </div>
+
+        <div id="productsGrid" class="products-grid"></div>
+      </section>
+
+      <!-- ============================================
+           REVIEWS TAB
+           ============================================ -->
+      <section class="tab-content" data-tab-panel="reviews">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">REVIEWS</h1>
+            <p class="page-subtitle">Customer reviews. Verify, hide, or delete.</p>
+          </div>
+        </div>
+
+        <div id="reviewsEmpty" class="empty-state" style="display: none;">
+          <div class="empty-state-icon">💬</div>
+          <h3>No reviews yet</h3>
+          <p>When customers submit reviews from the reviews page, they'll appear here.</p>
+        </div>
+
+        <div id="reviewsList"></div>
+      </section>
+
+      <!-- ============================================
+           MESSAGES TAB
+           ============================================ -->
+      <section class="tab-content" data-tab-panel="messages">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">MESSAGES</h1>
+            <p class="page-subtitle">Contact form submissions from your customers.</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-outline" onclick="window.adminMarkAllRead()">✓ Mark all read</button>
+            <button class="btn btn-danger" onclick="window.adminClearMessages()">🗑 Clear All</button>
+          </div>
+        </div>
+
+        <div id="messagesEmpty" class="empty-state" style="display: none;">
+          <div class="empty-state-icon">💌</div>
+          <h3>No messages yet</h3>
+          <p>When customers fill out the contact form, their messages will land here.</p>
+        </div>
+
+        <div id="messagesList"></div>
+      </section>
+
+      <!-- ============================================
+           NEWSLETTER TAB
+           ============================================ -->
+      <section class="tab-content" data-tab-panel="newsletter">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">NEWSLETTER</h1>
+            <p class="page-subtitle">Email subscribers from the homepage signup.</p>
+          </div>
+          <div class="page-actions">
+            <button class="btn btn-outline" onclick="window.adminExportEmails()">📥 Export CSV</button>
+            <button class="btn btn-danger" onclick="window.adminClearEmails()">🗑 Clear All</button>
+          </div>
+        </div>
+
+        <div id="newsletterEmpty" class="empty-state" style="display: none;">
+          <div class="empty-state-icon">📧</div>
+          <h3>No subscribers yet</h3>
+          <p>Email addresses from the homepage newsletter form will appear here.</p>
+        </div>
+
+        <div id="newsletterList"></div>
+      </section>
+
+      <!-- ============================================
+           SETTINGS TAB
+           ============================================ -->
+      <section class="tab-content" data-tab-panel="settings">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">SETTINGS</h1>
+            <p class="page-subtitle">Admin preferences and danger zone.</p>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h3>Change Password</h3>
+          <p class="settings-row-desc" style="margin-bottom: 14px;">Update the password used to access this admin panel. Saved to your browser only.</p>
+          <div class="input-row">
+            <input type="password" id="newPassword" placeholder="New password">
+            <button class="btn btn-primary" onclick="window.adminChangePassword()">UPDATE</button>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h3>Store Info</h3>
+          <div class="settings-row">
+            <div>
+              <strong>Business Name</strong>
+              <p class="settings-row-desc">BYJAY — Pins & Italian Charms</p>
+            </div>
+          </div>
+          <div class="settings-row">
+            <div>
+              <strong>Location</strong>
+              <p class="settings-row-desc">Manila, Philippines 🇵🇭</p>
+            </div>
+          </div>
+          <div class="settings-row">
+            <div>
+              <strong>Instagram</strong>
+              <p class="settings-row-desc">@byjayy__</p>
+            </div>
+          </div>
+          <div class="settings-row">
+            <div>
+              <strong>Free shipping threshold</strong>
+              <p class="settings-row-desc">PHP 500</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-section" style="border-color: rgba(239,68,68,0.3); background: rgba(239,68,68,0.02);">
+          <h3 style="color: var(--a-danger);">⚠️ Danger Zone</h3>
+          <p class="settings-row-desc" style="margin-bottom: 14px;">
+            Wipes all admin data (orders, reviews, messages, newsletter, stock status, custom password) from this browser. <strong>Cannot be undone.</strong>
+          </p>
+          <button class="btn btn-danger" onclick="window.adminWipeAll()">CLEAR ALL ADMIN DATA</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
