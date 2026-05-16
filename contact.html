@@ -1,3 +1,4 @@
+contact.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,7 +126,7 @@
         <a href="./reviews.html" class="text-cream text-sm tracking-widest hover:text-gold transition-colors">REVIEWS</a>
         <a href="./contact.html" class="text-gold text-sm tracking-widest">CONTACT</a>
       </nav>
-      <button id="menuBtn" class="md:hidden text-cream focus:outline-none">
+      <button id="menuBtn" class="md:hidden text-cream focus:outline-none" aria-label="Open mobile menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -342,6 +343,166 @@
     </div>
   </section>
 
+  <!-- ============ CONTACT FORM ============ -->
+  <section class="bg-ink py-20 px-6 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-72 h-72 bg-gold/8 rounded-full blur-3xl -translate-x-1/3 -translate-y-1/3"></div>
+    <div class="absolute bottom-0 right-0 w-72 h-72 bg-plum/8 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
+
+    <div class="relative max-w-2xl mx-auto">
+      <div class="text-center mb-10" data-aos="fade-up">
+        <p class="text-gold text-xs tracking-[5px] font-bold mb-3">SEND A MESSAGE</p>
+        <h2 class="font-display text-cream text-5xl md:text-6xl mb-3 leading-none">DROP US A LINE</h2>
+        <p class="text-cream/50 text-sm max-w-md mx-auto">
+          Got a question, a custom order idea, or just wanna say hi? Fill out the form below and we'll get back to you within 24 hours.
+        </p>
+      </div>
+
+      <form id="contactForm" class="space-y-4" data-aos="fade-up" data-aos-delay="80" novalidate>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-cream/60 text-xs tracking-widest font-bold mb-2">YOUR NAME *</label>
+            <input type="text" id="cfName" required
+              class="w-full px-5 py-3.5 rounded-xl bg-white/5 border-2 border-white/10 text-cream placeholder-cream/30 focus:border-gold focus:outline-none focus:bg-white/10 transition-colors"
+              placeholder="Maria Reyes">
+          </div>
+          <div>
+            <label class="block text-cream/60 text-xs tracking-widest font-bold mb-2">EMAIL *</label>
+            <input type="email" id="cfEmail" required
+              class="w-full px-5 py-3.5 rounded-xl bg-white/5 border-2 border-white/10 text-cream placeholder-cream/30 focus:border-gold focus:outline-none focus:bg-white/10 transition-colors"
+              placeholder="you@email.com">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-cream/60 text-xs tracking-widest font-bold mb-2">SUBJECT</label>
+          <input type="text" id="cfSubject"
+            class="w-full px-5 py-3.5 rounded-xl bg-white/5 border-2 border-white/10 text-cream placeholder-cream/30 focus:border-gold focus:outline-none focus:bg-white/10 transition-colors"
+            placeholder="What's this about?">
+        </div>
+
+        <div>
+          <label class="block text-cream/60 text-xs tracking-widest font-bold mb-2">MESSAGE *</label>
+          <textarea id="cfBody" required rows="5"
+            class="w-full px-5 py-3.5 rounded-xl bg-white/5 border-2 border-white/10 text-cream placeholder-cream/30 focus:border-gold focus:outline-none focus:bg-white/10 transition-colors resize-none"
+            placeholder="Tell us what's on your mind..."></textarea>
+        </div>
+
+        <p id="cfError" class="text-red-400 text-xs font-bold tracking-wider min-h-[16px]"></p>
+
+        <div class="flex flex-wrap items-center gap-4">
+          <button type="submit" class="btn-primary">SEND MESSAGE →</button>
+          <p class="text-cream/40 text-xs">
+            ✦ Or just DM us on <a href="https://www.instagram.com/byjayy__" target="_blank" class="text-gold hover:underline">Instagram</a>
+          </p>
+        </div>
+      </form>
+
+      <!-- Success state (hidden by default) -->
+      <div id="cfSuccess" class="hidden text-center py-12" data-aos="zoom-in">
+        <div class="text-6xl mb-4">✨</div>
+        <h3 class="font-display text-cream text-4xl mb-3 tracking-widest">MESSAGE SENT!</h3>
+        <p class="text-cream/60 mb-6 max-w-sm mx-auto">
+          Thanks for reaching out. We'll get back to you within 24 hours.
+        </p>
+        <button onclick="window.cfReset()" class="btn-secondary">SEND ANOTHER</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="bg-ink bj-faq-section relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-80 h-80 bg-gold/8 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
+    <div class="absolute bottom-0 left-0 w-72 h-72 bg-plum/8 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3"></div>
+
+    <div class="relative max-w-4xl mx-auto">
+      <div class="text-center mb-10" data-aos="fade-up">
+        <p class="text-gold text-xs tracking-[5px] font-bold mb-3">QUICK ANSWERS</p>
+        <h2 class="font-display text-cream text-5xl md:text-6xl mb-3 leading-none">FREQUENTLY ASKED</h2>
+        <p class="text-cream/50 text-sm max-w-md mx-auto">
+          Got a question? We probably answered it below. If not — just DM us!
+        </p>
+      </div>
+
+      <div class="bj-faq-list" data-aos="fade-up" data-aos-delay="80">
+
+        <div class="bj-faq-item">
+          <button class="bj-faq-q">
+            <span>How do I place an order?</span>
+            <span class="bj-faq-icon">+</span>
+          </button>
+          <div class="bj-faq-a">
+            <p>Easy! Browse the shop, add items to your cart using the <strong>+ ADD</strong> button on each product, then click the cart icon in the header. From there, hit <strong>CHECKOUT VIA DM</strong> — your order summary gets copied to your clipboard, and our Instagram DMs open in a new tab. Just paste, send, and we'll confirm within 24 hours.</p>
+          </div>
+        </div>
+
+        <div class="bj-faq-item">
+          <button class="bj-faq-q">
+            <span>Do you ship outside Metro Manila?</span>
+            <span class="bj-faq-icon">+</span>
+          </button>
+          <div class="bj-faq-a">
+            <p>Yes! We ship anywhere in the Philippines via J&T Express, LBC, or Flash Express. Shipping takes 2-5 business days for Metro Manila, and 3-7 days for provincial addresses. Orders over PHP 500 ship for free!</p>
+          </div>
+        </div>
+
+        <div class="bj-faq-item">
+          <button class="bj-faq-q">
+            <span>What payment methods do you accept?</span>
+            <span class="bj-faq-icon">+</span>
+          </button>
+          <div class="bj-faq-a">
+            <p>We accept GCash, Maya, BPI, BDO, and UnionBank bank transfers. Payment details are sent via DM after you confirm your order. We don't accept COD at the moment.</p>
+          </div>
+        </div>
+
+        <div class="bj-faq-item">
+          <button class="bj-faq-q">
+            <span>Are the Italian charms authentic?</span>
+            <span class="bj-faq-icon">+</span>
+          </button>
+          <div class="bj-faq-a">
+            <p>All our Italian charm bracelets are made with <strong>collector-grade stainless steel modules</strong> compatible with major Italian charm brands. Each piece is quality-checked by Jay before being sent out. While we use authentic-style hardware, the artwork on charms is custom-curated for our collections.</p>
+          </div>
+        </div>
+
+        <div class="bj-faq-item">
+          <button class="bj-faq-q">
+            <span>Can I request a custom design?</span>
+            <span class="bj-faq-icon">+</span>
+          </button>
+          <div class="bj-faq-a">
+            <p>Absolutely! Custom orders are our favorite. DM us on Instagram with your idea — could be a fandom we don't carry, your favorite quote, initials, or a totally original design. Custom pieces take 2-3 weeks and start at PHP 800.</p>
+          </div>
+        </div>
+
+        <div class="bj-faq-item">
+          <button class="bj-faq-q">
+            <span>What's your return policy?</span>
+            <span class="bj-faq-icon">+</span>
+          </button>
+          <div class="bj-faq-a">
+            <p>Because each piece is handpicked and small-batch, we don't offer returns on regular items. However, if your order arrives damaged or with the wrong item, message us within 48 hours of delivery with photos and we'll send a replacement at no cost. Custom orders are final sale.</p>
+          </div>
+        </div>
+
+        <div class="bj-faq-item">
+          <button class="bj-faq-q">
+            <span>How do I take care of my pins and charms?</span>
+            <span class="bj-faq-icon">+</span>
+          </button>
+          <div class="bj-faq-a">
+            <p>Keep them away from water, perfume, and harsh chemicals. Store in a dry place — the pouch your order comes in works great. For charms, gently wipe with a soft cloth. Avoid wearing in the shower or pool. With proper care, they'll last for years!</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="text-center text-cream/40 text-sm mt-10">
+        Still have questions? <a href="https://www.instagram.com/byjayy__" target="_blank" class="text-gold hover:text-gold-light underline">DM us on Instagram</a> — we love chatting!
+      </p>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer class="bg-ink text-cream text-center py-12 px-6">
     <div class="font-display text-gold text-4xl tracking-[8px] mb-4">BYJAY</div>
@@ -362,7 +523,60 @@
     document.getElementById('menuBtn').addEventListener('click', () => {
       document.getElementById('mobileMenu').classList.toggle('hidden');
     });
+
+    // ============ CONTACT FORM ============
+    // Saves the message to localStorage so the admin panel can see it.
+    // No backend needed — this is fully client-side.
+    const cf = document.getElementById('contactForm');
+    if (cf) {
+      cf.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name    = document.getElementById('cfName').value.trim();
+        const email   = document.getElementById('cfEmail').value.trim();
+        const subject = document.getElementById('cfSubject').value.trim();
+        const body    = document.getElementById('cfBody').value.trim();
+        const err     = document.getElementById('cfError');
+
+        // Simple validation
+        if (!name || !email || !body) {
+          err.textContent = '⚠ Please fill in all required fields.';
+          return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          err.textContent = '⚠ Please enter a valid email address.';
+          return;
+        }
+        err.textContent = '';
+
+        // Save the message — this is what the admin panel reads.
+        const newMsg = {
+          id: 'MSG-' + Date.now(),
+          name, email, subject, body,
+          date: new Date().toISOString(),
+          read: false
+        };
+        try {
+          const stored = JSON.parse(localStorage.getItem('byjay_messages')) || [];
+          stored.unshift(newMsg);
+          localStorage.setItem('byjay_messages', JSON.stringify(stored));
+        } catch (e) { /* best-effort */ }
+
+        // Hide form, show success
+        cf.classList.add('hidden');
+        document.getElementById('cfSuccess').classList.remove('hidden');
+      });
+    }
+
+    window.cfReset = function () {
+      const f = document.getElementById('contactForm');
+      f.reset();
+      f.classList.remove('hidden');
+      document.getElementById('cfSuccess').classList.add('hidden');
+      document.getElementById('cfError').textContent = '';
+      f.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
   </script>
 
+  <script src="shop-features.js"></script>
 </body>
 </html>
