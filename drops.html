@@ -1,3 +1,4 @@
+drops.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,7 +74,7 @@
         <a href="./reviews.html"class="nav-link text-cream text-sm tracking-widest hover:text-gold transition-colors">REVIEWS</a>
         <a href="./contact.html" class="nav-link text-cream text-sm tracking-widest hover:text-gold transition-colors">CONTACT</a>
       </nav>
-      <button id="menuBtn" class="md:hidden text-cream focus:outline-none">
+      <button id="menuBtn" class="md:hidden text-cream focus:outline-none" aria-label="Open mobile menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -132,7 +133,7 @@
           </div>
           <!-- Image -->
           <div class="h-72 overflow-hidden flex items-center justify-center bg-midnight/80 p-8">
-            <img src="f1.png" alt="Formula 1 Edition Bracelet"
+            <img src="f1.png" alt="Formula 1 Edition limited Italian charm bracelet showcasing six racing team logos"
               class="max-h-full object-contain transition-transform duration-700 group-hover:scale-110"
               onerror="this.parentElement.style.background='#2a2a3e'">
           </div>
@@ -191,7 +192,7 @@
             <span class="badge-plum" style="background:#e91e8c;color:#fff;">DISNEY</span>
           </div>
           <div class="h-72 overflow-hidden flex items-center justify-center p-8">
-            <img src="rapunzel.png" alt="Rapunzel Charm Watch"
+            <img src="rapunzel.png" alt="Disney Rapunzel limited edition charm watch with purple band and gold accents"
               class="max-h-full object-contain transition-transform duration-700 group-hover:scale-110"
               onerror="this.parentElement.style.background='#3d2b5e'">
           </div>
@@ -247,7 +248,7 @@
             <span class="badge-red" style="background:#7b5ea7;color:#fff;">MARVEL</span>
           </div>
           <div class="h-72 overflow-hidden flex items-center justify-center p-8">
-            <img src="spiderman.png" alt="Spider-Man Bracelet"
+            <img src="spiderman.png" alt="Amazing Spider-Man Marvel-themed Italian charm bracelet in red and black"
               class="max-h-full object-contain transition-transform duration-700 group-hover:scale-110"
               onerror="this.parentElement.style.background='#3e2a2a'">
           </div>
@@ -303,7 +304,7 @@
             <span class="badge-gold" style="background:#e91e8c;color:#fff;">COUPLES</span>
           </div>
           <div class="h-72 overflow-hidden flex items-center justify-center p-8">
-            <img src="linked.png" alt="Linked in Love Set"
+            <img src="linked.png" alt="Linked in Love couple set featuring paired Italian charm bracelets with photo charms"
               class="max-h-full object-contain transition-transform duration-700 group-hover:scale-110"
               onerror="this.parentElement.style.background='#2a2a3e'">
           </div>
@@ -388,7 +389,7 @@
             <h2 class="font-display text-3xl text-gold">PLACE ORDER</h2>
             <p class="text-gray-400 text-sm mt-1">We'll confirm via DM within 24 hours 💬</p>
           </div>
-          <button onclick="closeOrderModal()" class="text-gray-400 hover:text-cream transition-colors mt-1">
+          <button onclick="closeOrderModal()" aria-label="Close order form" class="text-gray-400 hover:text-cream transition-colors mt-1">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
         </div>
@@ -454,7 +455,7 @@
             <h2 class="font-display text-3xl text-plum">CUSTOMIZE IT</h2>
             <p class="text-gray-400 text-sm mt-1">Tell us exactly how you want it ✨</p>
           </div>
-          <button onclick="closeCustomizeModal()" class="text-gray-400 hover:text-cream transition-colors mt-1">
+          <button onclick="closeCustomizeModal()" aria-label="Close customize form" class="text-gray-400 hover:text-cream transition-colors mt-1">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
         </div>
@@ -633,5 +634,6 @@
     });
   </script>
 
+  <script src="shop-features.js"></script>
 </body>
 </html>
