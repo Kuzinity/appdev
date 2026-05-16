@@ -1,3 +1,4 @@
+reviews.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -134,7 +135,7 @@
         <a href="./reviews.html"       class="nav-link active text-gold text-sm tracking-widest">REVIEWS</a>
         <a href="./contact.html" class="nav-link text-cream text-sm tracking-widest hover:text-gold transition-colors">CONTACT</a>
       </nav>
-      <button id="menuBtn" class="md:hidden text-cream focus:outline-none">
+      <button id="menuBtn" class="md:hidden text-cream focus:outline-none" aria-label="Open mobile menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -556,6 +557,13 @@
       const newReview = { name, stars, text, item: item || '', date: dateStr, verified: false };
       reviews.unshift(newReview); // add to front
 
+      // Persist to localStorage so admin panel sees it
+      try {
+        const stored = JSON.parse(localStorage.getItem('byjay_reviews')) || [];
+        stored.unshift(newReview);
+        localStorage.setItem('byjay_reviews', JSON.stringify(stored));
+      } catch (e) { /* best-effort */ }
+
       // Re-render breakdown
       renderBreakdown();
 
@@ -584,5 +592,6 @@
     // (avoids duplicates; JS only appends new ones)
   </script>
 
+  <script src="shop-features.js"></script>
 </body>
 </html>
